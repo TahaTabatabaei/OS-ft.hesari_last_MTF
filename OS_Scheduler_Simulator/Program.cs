@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OS_Scheduler_Simulator.Configuration;
+using OS_Scheduler_Simulator.Contracts;
 using System;
 
 namespace OS_Scheduler_Simulator
@@ -11,7 +12,9 @@ namespace OS_Scheduler_Simulator
         {
             ServiceFactory.ConfigureServices();
 
+            var allProcesses = ServiceFactory.Create<IInputService>().GetData();
 
+            
         }
     }
 }
