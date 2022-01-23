@@ -1,5 +1,6 @@
 ﻿using OS_Scheduler_Simulator.Contracts;
 using OS_Scheduler_Simulator.Entities;
+using OS_Scheduler_Simulator.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +18,7 @@ namespace OS_Scheduler_Simulator.Services
             {
                 string taskInfo = Console.ReadLine();
                 var info = taskInfo.Split(" ");
-                processList.Add(new Process(info[0], double.Parse(info[1])));
+                processList.Add(new Process(info[0], double.Parse(info[1]), ProcessState.Ready));
             }
 
             return processList;

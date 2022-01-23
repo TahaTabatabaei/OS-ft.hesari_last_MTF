@@ -23,7 +23,7 @@ namespace OS_Scheduler_Simulator.Entities
         private ProcessState state;
         public ProcessState State
         {
-            get { return State; }
+            get { return state; }
             private set
             {
                 state = value;
@@ -42,11 +42,12 @@ namespace OS_Scheduler_Simulator.Entities
             }
         }
 
-        public Process(string processName,double expectedTime)
+        public Process(string processName,double expectedTime,ProcessState state)
         {
             this.ProcessName = processName;
             this.ExpectedTime = expectedTime;
             this.RemainingJob = expectedTime;
+            this.state = state;
         }
 
         public void ProcessInCycle()

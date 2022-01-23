@@ -11,10 +11,7 @@ namespace OS_Scheduler_Simulator
         public static void Main(string[] args)
         {
             ServiceFactory.ConfigureServices();
-
-            var allProcesses = ServiceFactory.Create<IInputService>().GetData();
-
-            
+            ServiceFactory.Create<ISimulateService>().Simulate();
         }
     }
 }

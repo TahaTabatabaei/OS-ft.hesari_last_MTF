@@ -13,14 +13,19 @@ namespace OS_Scheduler_Simulator.Services
         {
             var allProcesses = ServiceFactory.Create<IInputService>().GetData();
             var readyQueue = ReadyQueue.GetQueue();
-            foreach(var process in allProcesses)
+            foreach (var process in allProcesses)
             {
                 readyQueue.Enqueue(process);
             }
 
-            while (!readyQueue.IsEmpty())
-            {
+            var cycleNumber = 1;
 
+            var taskToProcess = ServiceFactory.Create<ISchedulingService>().GetTask();
+            while (taskToProcess != null)
+            {
+                Console.WriteLine($"Process In cycle {cycleNumber++}: Processing Task with name {taskToProcess.ProcessName}");
+                taskToProcess.ProcessInCycle();
+                taskToProcess = ServiceFactory.Create<ISchedulingService>().GetTask();
             }
         }
     }

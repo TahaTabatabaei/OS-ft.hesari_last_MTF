@@ -12,7 +12,11 @@ namespace OS_Scheduler_Simulator.Configuration
         private static ServiceProvider _serviceProvider;
         internal static void ConfigureServices()
         {
-            ServiceFactory._serviceProvider = new ServiceCollection().AddLogging().AddSingleton<IInputService,InputService>().BuildServiceProvider();
+            ServiceFactory._serviceProvider = new ServiceCollection().AddLogging()
+                .AddSingleton<IInputService, InputService>()
+                .AddSingleton<ISimulateService, SimulateService>()
+                .AddSingleton<ISchedulingService, FCFSService>()
+                .BuildServiceProvider();
         }
 
         public static T Create<T>()

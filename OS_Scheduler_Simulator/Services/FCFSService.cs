@@ -14,8 +14,12 @@ namespace OS_Scheduler_Simulator.Services
         {
             var readyQueue = ReadyQueue.GetQueue();
             
-            if (lastProcess == null || lastProcess.State != ProcessState.Active)
+            if (lastProcess == null || lastProcess.State == ProcessState.Done)
             {
+                if (readyQueue.IsEmpty())
+                {
+                    return null;
+                }
                 this.lastProcess = readyQueue.Dequeue();
             }
 
