@@ -52,10 +52,16 @@ namespace OS_Scheduler_Simulator.Entities
 
         public void ProcessInCycle()
         {
+            this.state = ProcessState.Active;
             if((--this.RemainingJob) == 0)
             {
                 this.State = ProcessState.Done;
             }
+        }
+
+        public void SetStateReady()
+        {
+            this.state = ProcessState.Ready; 
         }
 
     }

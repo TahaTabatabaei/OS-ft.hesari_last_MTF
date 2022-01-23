@@ -16,7 +16,8 @@ namespace OS_Scheduler_Simulator.Configuration
                 .AddSingleton<IInputService, InputService>()
                 .AddSingleton<ISimulateService, SimulateService>()
                 //.AddSingleton<ISchedulingService, FCFSService>()
-                .AddSingleton<ISchedulingService,SJFService>()
+                //.AddSingleton<ISchedulingService,SJFService>()
+                .AddSingleton<ISchedulingService,RoundRobinService>()
                 .BuildServiceProvider();
         }
 
