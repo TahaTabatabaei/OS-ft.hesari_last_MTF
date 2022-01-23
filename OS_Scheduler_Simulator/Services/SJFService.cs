@@ -3,6 +3,7 @@ using OS_Scheduler_Simulator.Entities;
 using OS_Scheduler_Simulator.Enums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace OS_Scheduler_Simulator.Services
@@ -13,7 +14,13 @@ namespace OS_Scheduler_Simulator.Services
 
         public Process GetTask()
         {
-            throw new NotImplementedException();
+            var readyQueue = ReadyQueue.GetQueue();
+            var minRemainingJob = readyQueue.Where(p => p.State != ProcessState.Done).Min(p => (double?)p.RemainingJob);
+            if(minRemainingJob == null)
+            {
+                return null;
+            }
+            return readyQueue.Where(p => p.RemainingJob == minRemainingJob).First();
         }
     }
 }

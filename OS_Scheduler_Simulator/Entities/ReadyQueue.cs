@@ -39,11 +39,11 @@ namespace OS_Scheduler_Simulator.Entities
             return this.readyQueue.GetEnumerator();
         }
 
-        public Process GetShortestRemainigJob()
-        {
-            var minimumRemaininigJob = this.Min(p => p.RemainingJob);
-            return this.Where(p => p.RemainingJob == minimumRemaininigJob && p.State != ProcessState.Done).FirstOrDefault();
-        }
+        //public Process GetShortestRemainigJob()
+        //{
+        //    var minimumRemaininigJob = this.Where(p => p.State != ProcessState.Done).Min(p => p.RemainingJob);
+        //    return this.Where(p => p.RemainingJob == minimumRemaininigJob).FirstOrDefault();
+        //}
 
         IEnumerator IEnumerable.GetEnumerator()
         {

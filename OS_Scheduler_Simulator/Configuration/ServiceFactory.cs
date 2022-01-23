@@ -15,7 +15,8 @@ namespace OS_Scheduler_Simulator.Configuration
             ServiceFactory._serviceProvider = new ServiceCollection().AddLogging()
                 .AddSingleton<IInputService, InputService>()
                 .AddSingleton<ISimulateService, SimulateService>()
-                .AddSingleton<ISchedulingService, FCFSService>()
+                //.AddSingleton<ISchedulingService, FCFSService>()
+                .AddSingleton<ISchedulingService,SJFService>()
                 .BuildServiceProvider();
         }
 
